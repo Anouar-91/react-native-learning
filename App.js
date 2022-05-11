@@ -1,19 +1,28 @@
 import React, {useState} from 'react';
-import {View, Text, StyleSheet, Button} from 'react-native'
+import {View, Text, StyleSheet, Button, TextInput} from 'react-native'
 
 export default function App() {
-  const [count, setCount] = useState(0)
+  const [name, setName] = useState("")
+  const [age, setAge] = useState("")
   return (
     <View style={styles.wrapper}>  
-      <Text style={styles.text}>{count}</Text>
-      <View     style={styles.button}>
-        <Button
-          onPress={() => setCount(count + 1)}
-          title="+1"
-          color="white"
-          accessibilityLabel="Learn more about this purple button"
-        />
-      </View>
+
+    <Text style={styles.text}>Nom : {name}</Text>
+      <TextInput 
+      style={styles.textInput} 
+      onChangeText={(text) => setName(text)}
+      placeholder="Indiquer votre nom"
+       />
+
+
+    <Text style={styles.text}>Age : {age}</Text>
+      <TextInput 
+      style={styles.textInput} 
+      onChangeText={(text) => setAge(text)}
+      placeholder="Indiquer votre age"
+      keyboardType='numeric'
+       />
+
 
     </View>
   );
@@ -22,17 +31,19 @@ export default function App() {
 const styles = StyleSheet.create({
   wrapper : {
     marginTop:50,
-    flexDirection:"column"
+    alignItems: "center",
+    height: 200
+  },
+  textInput : {
+    height:40,
+    borderColor: "grey",
+    borderWidth:1,
+    padding:10,
+    margin:9,
+    width:"90%"
   },
   text: {
-    textAlign: "center",
-    fontSize:50
 
-  },
-  button: {
-    padding: 20,
-    color: "red",
-    backgroundColor:"purple"
   }
 
 })
