@@ -1,49 +1,44 @@
 import React, {useState} from 'react';
-import {View, Text, StyleSheet, Button, TextInput} from 'react-native'
+import {View, Text, StyleSheet, Button, TextInput, ScrollView} from 'react-native'
 
 export default function App() {
-  const [name, setName] = useState("")
-  const [age, setAge] = useState("")
+  const obj = [
+    {id:1, name:"Anouar", age:14},
+    {id:2, name:"Samy", age:149},
+    {id:3, name:"mudffy", age:34},
+    {id:4, name:"homere", age:54},
+    {id:5, name:"test", age:54},
+    {id:6, name:"zoro", age:54},
+    {id:7, name:"nami", age:54}
+  ]
+  const [family, setFamily] = useState(obj)
+
   return (
     <View style={styles.wrapper}>  
+    <ScrollView>
+      {family.map((member) => {
+        return (
+          <View key={member.id} style={styles.viewList}>
 
-    <Text style={styles.text}>Nom : {name}</Text>
-      <TextInput 
-      style={styles.textInput} 
-      onChangeText={(text) => setName(text)}
-      placeholder="Indiquer votre nom"
-       />
+              <Text style={styles.text}>Nom: {member.name}</Text>
 
-
-    <Text style={styles.text}>Age : {age}</Text>
-      <TextInput 
-      style={styles.textInput} 
-      onChangeText={(text) => setAge(text)}
-      placeholder="Indiquer votre age"
-      keyboardType='numeric'
-       />
-
-
+              <Text style={styles.text}>Age: {member.age}</Text>
+          </View>
+        )
+      })}
+      </ScrollView>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  wrapper : {
-    marginTop:50,
-    alignItems: "center",
-    height: 200
+  viewList:{
+    marginTop:30,
+    backgroundColor: "purple", 
+    padding:19
   },
-  textInput : {
-    height:40,
-    borderColor: "grey",
-    borderWidth:1,
-    padding:10,
-    margin:9,
-    width:"90%"
-  },
-  text: {
-
+  text:{
+    color:"white"
   }
 
 })
