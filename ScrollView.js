@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, Text, StyleSheet, Button, TextInput, FlatList} from 'react-native'
+import {View, Text, StyleSheet, Button, TextInput, ScrollView} from 'react-native'
 
 export default function App() {
   const obj = [
@@ -13,25 +13,20 @@ export default function App() {
   ]
   const [family, setFamily] = useState(obj)
 
-  const renderItem = ({item}) => {
-    return (
-      <View  style={styles.viewList}>
-
-        <Text style={styles.text}>Nom: {item.name}</Text>
-
-        <Text style={styles.text}>Age: {item.age}</Text>
-    </View>
-    )
-  }
-
   return (
     <View style={styles.wrapper}>  
-      <FlatList 
-        data={family}
-        renderItem={renderItem}
-        keyExtractor={ item => item.id}
-      
-      />
+    <ScrollView>
+      {family.map((member) => {
+        return (
+          <View key={member.id} style={styles.viewList}>
+
+              <Text style={styles.text}>Nom: {member.name}</Text>
+
+              <Text style={styles.text}>Age: {member.age}</Text>
+          </View>
+        )
+      })}
+      </ScrollView>
     </View>
   );
 }
