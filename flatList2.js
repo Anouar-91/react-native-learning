@@ -34,7 +34,7 @@ export default function App() {
     data={family}
     renderItem={renderItem}
     keyExtractor={(item, index) => index.toString()}
-    horizontal
+    horizontal={false}
     inverted={inverted}
     refreshControl= {
       <RefreshControl 
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
   container: {
     alignItems: "stretch",
 
-  },
+  },  
   listView:{
     padding: 40,
     backgroundColor: "deepskyblue",
